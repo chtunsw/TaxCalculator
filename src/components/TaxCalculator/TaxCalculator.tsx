@@ -79,7 +79,9 @@ const TaxCalculator = () => {
     return (
       <Cover>
         <div>Your estimated taxable income is:</div>
-        <div>The free and simple online tax calculator.</div>
+        <span>{/* taxableIncome */}</span>
+        <div>Breakdown</div>
+        {/* taxBrackets */}
       </Cover>
     );
   };
