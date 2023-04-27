@@ -1,3 +1,7 @@
 .taxCalculator {
   width: 764px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
