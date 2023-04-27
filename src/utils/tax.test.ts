@@ -1,4 +1,4 @@
-import { calculateTax } from "./tax";
+import { calculateTax, getCurrencyString } from "./tax";
 
 describe("calculateTax", () => {
   it.each`
@@ -19,6 +19,25 @@ describe("calculateTax", () => {
     "should return taxable $taxable for salary $salary and residence $residence",
     ({ salary, residence, taxable }) => {
       expect(calculateTax(salary, residence).taxableIncome).toEqual(taxable);
+    }
+  );
+});
+
+describe("getCurrencyString", () => {
+  it.each`
+    num                   | currencyString
+    ${-61231231234.25345} | ${"-$61,231,231,234.25"}
+    ${-1234.25}           | ${"-$1,234.25"}
+    ${-100.0}             | ${"-$100.00"}
+    ${-0}                 | ${"-$0.00"}
+    ${0}                  | ${"$0.00"}
+    ${100.0}              | ${"$100.00"}
+    ${1234.25}            | ${"$1,234.25"}
+    ${61231231234.25345}  | ${"$61,231,231,234.25"}
+  `(
+    "should return currency string $currencyString for number $num",
+    ({ num, currencyString }) => {
+      expect(getCurrencyString(num)).toEqual(currencyString);
     }
   );
 });

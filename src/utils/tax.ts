@@ -100,3 +100,15 @@ export const calculateTax = (
   );
   return { taxBrackets, taxableIncome };
 };
+
+export const getCurrencyString = (num: number): string => {
+  const localeString = num.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+  const currencyString =
+    localeString[0] === "-"
+      ? localeString[0] + "$" + localeString.slice(1)
+      : `$${localeString}`;
+  return currencyString;
+};
