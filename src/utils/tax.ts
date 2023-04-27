@@ -1,5 +1,5 @@
-type IncomeYear = "2022 - 2023" | "2021 - 2022";
-type CountryOfResidence = "Australia" | "Overseas";
+export type IncomeYear = "2022 - 2023" | "2021 - 2022";
+export type CountryOfResidence = "Australia" | "Overseas";
 
 export const incomeYears = ["2022 - 2023", "2021 - 2022"];
 export const countries = ["Australia", "Overseas"];
@@ -16,7 +16,7 @@ export interface TaxBracket extends TaxRate {
 
 export interface TaxResult {
   taxBrackets: TaxBracket[];
-  taxableIncome: number;
+  tax: number;
 }
 
 export const domesticTaxRates: TaxRate[] = [
@@ -80,7 +80,7 @@ export const calculateTax = (
         ...t,
         taxable: 0,
       })),
-      taxableIncome: 0,
+      tax: 0,
     };
   const taxBrackets = taxRates.map((t) => {
     let taxable = 0;
@@ -94,11 +94,8 @@ export const calculateTax = (
       taxable,
     };
   });
-  const taxableIncome = taxBrackets.reduce(
-    (accu, curr) => curr.taxable + accu,
-    0
-  );
-  return { taxBrackets, taxableIncome };
+  const tax = taxBrackets.reduce((accu, curr) => curr.taxable + accu, 0);
+  return { taxBrackets, tax };
 };
 
 export const getCurrencyString = (num: number): string => {

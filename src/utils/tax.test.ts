@@ -2,7 +2,7 @@ import { calculateTax, getCurrencyString } from "./tax";
 
 describe("calculateTax", () => {
   it.each`
-    salary    | residence      | taxable
+    salary    | residence      | tax
     ${-10}    | ${"Australia"} | ${0}
     ${0}      | ${"Australia"} | ${0}
     ${10000}  | ${"Australia"} | ${0}
@@ -16,9 +16,9 @@ describe("calculateTax", () => {
     ${150000} | ${"Overseas"}  | ${50100}
     ${200000} | ${"Overseas"}  | ${70200}
   `(
-    "should return taxable $taxable for salary $salary and residence $residence",
-    ({ salary, residence, taxable }) => {
-      expect(calculateTax(salary, residence).taxableIncome).toEqual(taxable);
+    "should return tax $tax for salary $salary and residence $residence",
+    ({ salary, residence, tax }) => {
+      expect(calculateTax(salary, residence).tax).toEqual(tax);
     }
   );
 });

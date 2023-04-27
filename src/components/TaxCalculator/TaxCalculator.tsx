@@ -3,6 +3,13 @@ import { Paper, Button } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CurrencyField from "../InputField/CurrencyField/CurrencyField";
 import SelectionField from "../InputField/SelectionField/SelectionField";
+import {
+  IncomeYear,
+  CountryOfResidence,
+  TaxBracket,
+  calculateTax,
+  getCurrencyString,
+} from "../../utils/tax";
 import "./TaxCalculator.css";
 
 interface CoverProps {
@@ -13,13 +20,20 @@ interface CalculatorProps {
   showResult: boolean;
 }
 
+interface TaxBracketProps {
+  taxBracket: TaxBracket;
+}
+
 const Cover = (props: PropsWithChildren<CoverProps>) => {
   return <div className={props.className}>{props.children}</div>;
 };
 
 const TaxCalculator = () => {
   const [showResult, setShowResult] = useState(false);
-  const [taxableIncome, setTaxableIncome] = useState();
+  const [residence, setResidence] = useState<CountryOfResidence>("Australia");
+  const [incomeYear, setIncomeYear] = useState<IncomeYear>("2022 - 2023");
+  const [taxableIncome, setTaxableIncome] = useState<number>(0);
+  const { taxBrackets, tax } = calculateTax(taxableIncome, residence);
 
   const BrandCover = () => {
     return (
@@ -76,12 +90,27 @@ const TaxCalculator = () => {
   };
 
   const TaxDetail = () => {
+    const TaxBracket = (props: TaxBracketProps) => {
+      return (
+        <div>
+          <div>
+            <div>Tax Bracket</div>
+            <div>{`${getCurrencyString(
+              props.taxBracket.lower
+            )} - ${getCurrencyString(props.taxBracket.upper)}`}</div>
+          </div>
+          <div>{getCurrencyString(props.taxBracket.taxable)}</div>
+        </div>
+      );
+    };
     return (
       <Cover>
-        <div>Your estimated taxable income is:</div>
-        <span>{/* taxableIncome */}</span>
+        <div>Your estimated tax is:</div>
+        <span>{getCurrencyString(tax)}</span>
         <div>Breakdown</div>
-        {/* taxBrackets */}
+        {taxBrackets.map((tb) => (
+          <TaxBracket taxBracket={tb} />
+        ))}
       </Cover>
     );
   };
@@ -101,6 +130,7 @@ const TaxCalculator = () => {
     return (
       <>
         <Calculator showResult={showResult} />
+        <TaxDetail />
       </>
     );
   };
