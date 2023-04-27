@@ -1,5 +1,6 @@
 import React, { PropsWithChildren, useState } from "react";
 import { Paper, Button } from "@mui/material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CurrencyField from "../InputField/CurrencyField/CurrencyField";
 import SelectionField from "../InputField/SelectionField/SelectionField";
 import "./TaxCalculator.css";
@@ -38,7 +39,10 @@ const TaxCalculator = () => {
     };
     const title = showResult ? "Your tax results" : "Calculate your tax";
     const tip = showResult ? null : (
-      <div>Fields marked with * are mandatory</div>
+      <div>
+        <InfoOutlinedIcon />
+        <span>Fields marked with * are mandatory</span>
+      </div>
     );
     const button = showResult ? (
       <div onClick={onBackToPrevious}>Go back to previous screen</div>
