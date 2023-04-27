@@ -42,8 +42,10 @@ export const taxRates: TaxRate[] = [
 ];
 
 export const calculateTax = (income: number): TaxResult => {
-  const taxRate = taxRates.find((t) => income > t.lower && income <= t.upper);
-  if (!taxRate)
+  const validIncome = taxRates.some(
+    (t) => income > t.lower && income <= t.upper
+  );
+  if (!validIncome)
     return {
       taxBrackets: taxRates.map((t) => ({
         ...t,
