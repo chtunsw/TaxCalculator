@@ -1,3 +1,9 @@
+type IncomeYear = "2022 - 2023" | "2021 - 2022";
+type CountryOfResidence = "Australia" | "Overseas";
+
+export const incomeYears = ["2022 - 2023", "2021 - 2022"];
+export const countries = ["Australia", "Overseas"];
+
 export interface TaxRate {
   lower: number;
   upper: number;
@@ -13,7 +19,7 @@ export interface TaxResult {
   taxableIncome: number;
 }
 
-export const taxRates: TaxRate[] = [
+export const domesticTaxRates: TaxRate[] = [
   {
     lower: 0,
     upper: 18200,
@@ -41,7 +47,30 @@ export const taxRates: TaxRate[] = [
   },
 ];
 
-export const calculateTax = (income: number): TaxResult => {
+export const overseasTaxRates: TaxRate[] = [
+  {
+    lower: 0,
+    upper: 120000,
+    rate: 0.325,
+  },
+  {
+    lower: 120000,
+    upper: 180000,
+    rate: 0.37,
+  },
+  {
+    lower: 180000,
+    upper: Infinity,
+    rate: 0.45,
+  },
+];
+
+export const calculateTax = (
+  income: number,
+  residence: CountryOfResidence
+): TaxResult => {
+  const taxRates =
+    residence === "Australia" ? domesticTaxRates : overseasTaxRates;
   const validIncome = taxRates.some(
     (t) => income > t.lower && income <= t.upper
   );
