@@ -3,7 +3,7 @@ import TaxCalculator from "../../components/TaxCalculator/TaxCalculator";
 
 const HomePage = () => {
   return (
-    <div className="pageBody">
+    <div>
       <TaxCalculator />
     </div>
   );
