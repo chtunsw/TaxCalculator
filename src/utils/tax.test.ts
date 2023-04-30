@@ -2,23 +2,23 @@ import { calculateTax, getCurrencyString } from "./tax";
 
 describe("calculateTax", () => {
   it.each`
-    salary    | residence      | tax
-    ${-10}    | ${"Australia"} | ${0}
-    ${0}      | ${"Australia"} | ${0}
-    ${10000}  | ${"Australia"} | ${0}
-    ${20000}  | ${"Australia"} | ${342}
-    ${60000}  | ${"Australia"} | ${9967}
-    ${150000} | ${"Australia"} | ${40567}
-    ${200000} | ${"Australia"} | ${60667}
-    ${-10}    | ${"Overseas"}  | ${0}
-    ${0}      | ${"Overseas"}  | ${0}
-    ${10000}  | ${"Overseas"}  | ${3250}
-    ${150000} | ${"Overseas"}  | ${50100}
-    ${200000} | ${"Overseas"}  | ${70200}
+    salary    | residence      | incomeYear       | tax
+    ${-10}    | ${"Australia"} | ${"2022 - 2023"} | ${0}
+    ${0}      | ${"Australia"} | ${"2022 - 2023"} | ${0}
+    ${10000}  | ${"Australia"} | ${"2022 - 2023"} | ${0}
+    ${20000}  | ${"Australia"} | ${"2022 - 2023"} | ${342}
+    ${60000}  | ${"Australia"} | ${"2022 - 2023"} | ${9967}
+    ${150000} | ${"Australia"} | ${"2022 - 2023"} | ${40567}
+    ${200000} | ${"Australia"} | ${"2021 - 2022"} | ${60667}
+    ${-10}    | ${"Overseas"}  | ${"2021 - 2022"} | ${0}
+    ${0}      | ${"Overseas"}  | ${"2021 - 2022"} | ${0}
+    ${10000}  | ${"Overseas"}  | ${"2021 - 2022"} | ${3250}
+    ${150000} | ${"Overseas"}  | ${"2021 - 2022"} | ${50100}
+    ${200000} | ${"Overseas"}  | ${"2021 - 2022"} | ${70200}
   `(
-    "should return tax $tax for salary $salary and residence $residence",
-    ({ salary, residence, tax }) => {
-      expect(calculateTax(salary, residence).tax).toEqual(tax);
+    "should return tax $tax for salary $salary, residence $residence and incomeYear $incomeYear",
+    ({ salary, residence, incomeYear, tax }) => {
+      expect(calculateTax(salary, residence, incomeYear).tax).toEqual(tax);
     }
   );
 });

@@ -1,0 +1,94 @@
+{
+  "Australia": {
+    "2022 - 2023": [
+      {
+        "lower": 0,
+        "upper": 18200,
+        "rate": 0
+      },
+      {
+        "lower": 18200,
+        "upper": 45000,
+        "rate": 0.19
+      },
+      {
+        "lower": 45000,
+        "upper": 120000,
+        "rate": 0.325
+      },
+      {
+        "lower": 120000,
+        "upper": 180000,
+        "rate": 0.37
+      },
+      {
+        "lower": 180000,
+        "upper": "Infinity",
+        "rate": 0.45
+      }
+    ],
+    "2021 - 2022": [
+      {
+        "lower": 0,
+        "upper": 18200,
+        "rate": 0
+      },
+      {
+        "lower": 18200,
+        "upper": 45000,
+        "rate": 0.19
+      },
+      {
+        "lower": 45000,
+        "upper": 120000,
+        "rate": 0.325
+      },
+      {
+        "lower": 120000,
+        "upper": 180000,
+        "rate": 0.37
+      },
+      {
+        "lower": 180000,
+        "upper": "Infinity",
+        "rate": 0.45
+      }
+    ]
+  },
+  "Overseas": {
+    "2022 - 2023": [
+      {
+        "lower": 0,
+        "upper": 120000,
+        "rate": 0.325
+      },
+      {
+        "lower": 120000,
+        "upper": 180000,
+        "rate": 0.37
+      },
+      {
+        "lower": 180000,
+        "upper": "Infinity",
+        "rate": 0.45
+      }
+    ],
+    "2021 - 2022": [
+      {
+        "lower": 0,
+        "upper": 120000,
+        "rate": 0.325
+      },
+      {
+        "lower": 120000,
+        "upper": 180000,
+        "rate": 0.37
+      },
+      {
+        "lower": 180000,
+        "upper": "Infinity",
+        "rate": 0.45
+      }
+    ]
+  }
+}

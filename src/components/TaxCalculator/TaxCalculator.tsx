@@ -4,6 +4,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CurrencyField from "../InputField/CurrencyField/CurrencyField";
 import SelectionField from "../InputField/SelectionField/SelectionField";
 import {
+  IncomeYear,
   CountryOfResidence,
   incomeYears,
   countries,
@@ -118,14 +119,9 @@ const TaxCalculator = () => {
     taxableIncome === "" || isNaN(Number(taxableIncome));
   const { taxBrackets, tax } = calculateTax(
     Number(taxableIncome),
-    residence as CountryOfResidence
+    residence as CountryOfResidence,
+    incomeYear as IncomeYear
   );
-
-  console.log("showResult", showResult);
-  console.log("residence", residence);
-  console.log("incomeYear", incomeYear);
-  console.log("taxableIncome", taxableIncome);
-  console.log("tax", tax);
 
   const BrandCover = () => {
     return (
