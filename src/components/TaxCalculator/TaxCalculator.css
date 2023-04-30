@@ -12,8 +12,9 @@
   padding: 32px;
 }
 
-.brandCover {
+.cover {
   height: 100%;
+  border-radius: 5px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,23 +23,24 @@
   background-color: #8477c9;
 }
 
-.brandCover .planetoid {
+.cover .planetoid {
   position: absolute;
   bottom: 0;
   left: 0;
 }
 
-.brandCover .moon {
+.cover .moon {
   position: absolute;
   bottom: 86px;
   left: 128px;
 }
 
-.brandCover .brandContent {
+.cover .brandContent {
+  position: absolute;
   padding-top: 128px;
 }
 
-.brandCover .brandTitle {
+.cover .brandTitle {
   font-family: Lato;
   font-size: 48px;
   font-weight: 700;
@@ -48,7 +50,7 @@
   color: #ffffff;
 }
 
-.brandCover .brandText {
+.cover .brandText {
   font-family: Lato;
   font-size: 16px;
   font-weight: 400;
@@ -58,8 +60,81 @@
   color: #ffffff;
 }
 
-.detailCover {
-  background-color: #8477c9;
+.cover .detailContent {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+}
+
+.cover .detailTitle {
+  margin-bottom: 8px;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+}
+
+.cover .estimatedTax {
+  height: 70px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-family: Lato;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #8477c9;
+}
+
+.taxBracket {
+  height: 48px;
+  margin-bottom: 8px;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.taxBracket .title {
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.taxBracket .range {
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.taxBracket .value {
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #8477c9;
 }
 
 .calculator {
@@ -108,4 +183,17 @@
 
 .calculator .calculateButton {
   margin-top: 8px;
+}
+
+.calculator .backButton {
+  margin-top: 8px;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #8477c9;
+  border-bottom: solid 1px #8477c9;
+  cursor: pointer;
 }

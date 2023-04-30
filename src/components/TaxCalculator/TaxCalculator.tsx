@@ -4,7 +4,6 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CurrencyField from "../InputField/CurrencyField/CurrencyField";
 import SelectionField from "../InputField/SelectionField/SelectionField";
 import {
-  IncomeYear,
   CountryOfResidence,
   incomeYears,
   countries,
@@ -13,10 +12,6 @@ import {
   getCurrencyString,
 } from "../../utils/tax";
 import "./TaxCalculator.css";
-
-interface CoverProps {
-  className?: string;
-}
 
 interface CalculatorProps {
   showResult: boolean;
@@ -34,8 +29,14 @@ interface TaxBracketProps {
   taxBracket: TaxBracket;
 }
 
-const Cover = (props: PropsWithChildren<CoverProps>) => {
-  return <div className={props.className}>{props.children}</div>;
+const Cover = (props: PropsWithChildren) => {
+  return (
+    <div className="cover">
+      <img src="Planetoid.png" className="planetoid" alt="planetoid" />
+      <img src="Moon.png" className="moon" alt="moon" />
+      {props.children}
+    </div>
+  );
 };
 
 const Calculator = ({
@@ -63,7 +64,9 @@ const Calculator = ({
     </div>
   );
   const button = showResult ? (
-    <div onClick={onBackToPrevious}>Go back to previous screen</div>
+    <div onClick={onBackToPrevious} className="backButton">
+      Go back to previous screen
+    </div>
   ) : (
     <Button
       onClick={onCalculate}
@@ -126,9 +129,7 @@ const TaxCalculator = () => {
 
   const BrandCover = () => {
     return (
-      <Cover className="brandCover">
-        <img src="Planetoid.png" className="planetoid" />
-        <img src="Moon.png" className="moon" />
+      <Cover>
         <div className="brandContent">
           <div className="brandTitle">Tax-o-tron</div>
           <p className="brandText">
@@ -142,28 +143,34 @@ const TaxCalculator = () => {
   const TaxDetail = () => {
     const TaxBracket = (props: TaxBracketProps) => {
       return (
-        <div>
+        <div className="taxBracket">
           <div>
-            <div>Tax Bracket</div>
-            <div>{`${getCurrencyString(
+            <div className="title">Tax Bracket</div>
+            <div className="range">{`${getCurrencyString(
               props.taxBracket.lower
             )} - ${getCurrencyString(props.taxBracket.upper)}`}</div>
           </div>
-          <div>{getCurrencyString(props.taxBracket.taxable)}</div>
+          <div className="value">
+            {getCurrencyString(props.taxBracket.taxable)}
+          </div>
         </div>
       );
     };
     return (
-      <Cover className="detailCover">
-        <div>Your estimated tax is:</div>
-        <span>{getCurrencyString(tax)}</span>
-        <div>Breakdown</div>
-        {taxBrackets.map((tb, index) => (
-          <TaxBracket
-            taxBracket={tb}
-            key={index.toString() + tb.lower.toString() + tb.upper.toString()}
-          />
-        ))}
+      <Cover>
+        <div className="detailContent">
+          <div className="detailTitle">Your estimated tax is:</div>
+          <div className="estimatedTax">
+            <span>{getCurrencyString(tax)}</span>
+          </div>
+          <div className="detailTitle">Breakdown</div>
+          {taxBrackets.map((tb, index) => (
+            <TaxBracket
+              taxBracket={tb}
+              key={index.toString() + tb.lower.toString() + tb.upper.toString()}
+            />
+          ))}
+        </div>
       </Cover>
     );
   };
@@ -196,18 +203,22 @@ const TaxCalculator = () => {
   const renderResult = () => {
     return (
       <>
-        <Calculator
-          showResult={showResult}
-          setShowResult={setShowResult}
-          residence={residence}
-          setResidence={setResidence}
-          incomeYear={incomeYear}
-          setIncomeYear={setIncomeYear}
-          taxableIncome={taxableIncome}
-          setTaxableIncome={setTaxableIncome}
-          taxableIncomeError={taxableIncomeError}
-        />
-        <TaxDetail />
+        <div className="box">
+          <Calculator
+            showResult={showResult}
+            setShowResult={setShowResult}
+            residence={residence}
+            setResidence={setResidence}
+            incomeYear={incomeYear}
+            setIncomeYear={setIncomeYear}
+            taxableIncome={taxableIncome}
+            setTaxableIncome={setTaxableIncome}
+            taxableIncomeError={taxableIncomeError}
+          />
+        </div>
+        <div className="box">
+          <TaxDetail />
+        </div>
       </>
     );
   };
