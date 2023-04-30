@@ -70,7 +70,7 @@ const Calculator = ({
     </Button>
   );
   return (
-    <div>
+    <div className="calculator">
       <span>{title}</span>
       {tip}
       <SelectionField
@@ -119,9 +119,15 @@ const TaxCalculator = () => {
 
   const BrandCover = () => {
     return (
-      <Cover>
-        <div>Tax-o-tron</div>
-        <p>The free and simple online tax calculator.</p>
+      <Cover className="brandCover">
+        <img src="Planetoid.png" className="planetoid" />
+        <img src="Moon.png" className="moon" />
+        <div className="brandContent">
+          <div className="brandTitle">Tax-o-tron</div>
+          <p className="brandText">
+            The free and simple online tax calculator.
+          </p>
+        </div>
       </Cover>
     );
   };
@@ -141,7 +147,7 @@ const TaxCalculator = () => {
       );
     };
     return (
-      <Cover>
+      <Cover className="detailCover">
         <div>Your estimated tax is:</div>
         <span>{getCurrencyString(tax)}</span>
         <div>Breakdown</div>
@@ -159,18 +165,22 @@ const TaxCalculator = () => {
   const renderInput = () => {
     return (
       <>
-        <BrandCover />
-        <Calculator
-          showResult={showResult}
-          setShowResult={setShowResult}
-          residence={residence}
-          setResidence={setResidence}
-          incomeYear={incomeYear}
-          setIncomeYear={setIncomeYear}
-          taxableIncome={taxableIncome}
-          setTaxableIncome={setTaxableIncome}
-          taxableIncomeError={taxableIncomeError}
-        />
+        <div className="box">
+          <BrandCover />
+        </div>
+        <div className="box">
+          <Calculator
+            showResult={showResult}
+            setShowResult={setShowResult}
+            residence={residence}
+            setResidence={setResidence}
+            incomeYear={incomeYear}
+            setIncomeYear={setIncomeYear}
+            taxableIncome={taxableIncome}
+            setTaxableIncome={setTaxableIncome}
+            taxableIncomeError={taxableIncomeError}
+          />
+        </div>
       </>
     );
   };

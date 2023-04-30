@@ -1,7 +1,67 @@
 .taxCalculator {
-  width: 764px;
+  width: 860px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.box {
+  width: 50%;
+  height: 512px;
+  padding: 32px;
+}
+
+.brandCover {
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #8477c9;
+}
+
+.brandCover .planetoid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.brandCover .moon {
+  position: absolute;
+  bottom: 86px;
+  left: 128px;
+}
+
+.brandCover .brandContent {
+  padding-top: 128px;
+}
+
+.brandCover .brandTitle {
+  font-family: Lato;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+}
+
+.brandCover .brandText {
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+}
+
+.detailCover {
+  background-color: #8477c9;
+}
+
+.calculator {
+  width: 50%;
 }
