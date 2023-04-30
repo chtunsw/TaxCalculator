@@ -57,21 +57,28 @@ const Calculator = ({
   };
   const title = showResult ? "Your tax results" : "Calculate your tax";
   const tip = showResult ? null : (
-    <div>
-      <InfoOutlinedIcon />
-      <span>Fields marked with * are mandatory</span>
+    <div className="tip">
+      <InfoOutlinedIcon className="icon" />
+      <span className="text">Fields marked with * are mandatory</span>
     </div>
   );
   const button = showResult ? (
     <div onClick={onBackToPrevious}>Go back to previous screen</div>
   ) : (
-    <Button onClick={onCalculate} disabled={taxableIncomeError}>
+    <Button
+      onClick={onCalculate}
+      disabled={taxableIncomeError}
+      fullWidth
+      variant="contained"
+      size="large"
+      className="calculateButton"
+    >
       Calculate
     </Button>
   );
   return (
     <div className="calculator">
-      <span>{title}</span>
+      <span className="title">{title}</span>
       {tip}
       <SelectionField
         label="Select your country of residence *"

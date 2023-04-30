@@ -1,5 +1,6 @@
 import React from "react";
 import { TextField } from "@mui/material";
+import "./CurrencyField.css";
 
 interface CurrencyFieldProps {
   label: string;
@@ -20,13 +21,15 @@ const CurrencyField = ({
     setValue(event.target.value);
   };
   return (
-    <div>
-      <div>{label}</div>
+    <div className="container">
+      <div className="label">{label}</div>
       <TextField
         value={value}
         onChange={onChange}
         disabled={disabled}
         error={error}
+        size="small"
+        fullWidth
       />
     </div>
   );
